@@ -50,7 +50,7 @@ route.get('/:id', async (req, res) => {
 })
 
 //update product
-route.put('/:id',upload.single('updateImage'),  async (req, res) => {
+route.put('/:id',upload.single('productImage'),  async (req, res) => {
     if (req.file) {
         var updatedProduct = {
             name: req.body.name,
