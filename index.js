@@ -9,6 +9,8 @@ const adminRouter = require('./routes/admins');
 const searchRouter = require('./routes/search');
 const productRouter = require('./routes/products');
 const rekvizitRouter = require('./routes/rekvizit');
+const sectionRouter = require('./routes/section');
+const inlineSectionRouter = require('./routes/inlineSection');
 const cors = require('cors');
 
 
@@ -44,6 +46,8 @@ app.use('/api/admin', adminRouter);
 app.use('/api/search', searchRouter);
 app.use('/api/product', productRouter);
 app.use('/api/rekvizit', rekvizitRouter);
+app.use('/api/section', sectionRouter);
+app.use('/api/inline', inlineSectionRouter);
 
 
 
