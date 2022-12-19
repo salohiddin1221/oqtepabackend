@@ -2,6 +2,8 @@ const route = require('express').Router();
 const Products = require('../models/Products');
 const multer = require('multer'); 
 
+const MainURL = "https://oqtepa-backend.herokuapp.com"
+
 // upload photo with multer
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -21,7 +23,7 @@ route.post('/', upload.single('productImage'), async (req, res) => {
     try {
         const product = new Products(req.body);
         product.productImage = req.file.originalname;
-        product.ImageUrl = `http://oqtepa.osiyoexpert.uz/media/${product.productImage}`;
+        product.ImageUrl = `${MainURL}/uploads/${product.productImage}`;
         await product.save();
         res.status(201).json(product);
     } catch (err) {

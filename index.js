@@ -11,6 +11,7 @@ const productRouter = require('./routes/products');
 const rekvizitRouter = require('./routes/rekvizit');
 const sectionRouter = require('./routes/section');
 const inlineSectionRouter = require('./routes/inlineSection');
+const storageRouter = require('./routes/storage')
 const cors = require('cors');
 
 
@@ -48,6 +49,7 @@ app.use('/api/product', productRouter);
 app.use('/api/rekvizit', rekvizitRouter);
 app.use('/api/section', sectionRouter);
 app.use('/api/inline', inlineSectionRouter);
+app.use('/api/storage', storageRouter);
 
 
 
