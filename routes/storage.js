@@ -2,8 +2,8 @@ const route = require('express').Router();
 const Storage = require('../models/Storage')
 const multer = require('multer'); 
 
-const MainURL = "http://localhost:5000"
-//const MainURL = "https://oqtepa-backend.herokuapp.com"
+//const MainURL = "http://localhost:5000"
+const MainURL = "https://oqtepa-backend.herokuapp.com"
 
 
 // upload photo with multer
