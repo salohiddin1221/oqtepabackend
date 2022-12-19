@@ -1,6 +1,9 @@
-const router = require('express').Router();
+const route = require('express').Router();
 const Storage = require('../models/Storage')
 const multer = require('multer'); 
+
+const MainURL = "http://localhost:5000"
+//const MainURL = "https://oqtepa-backend.herokuapp.com"
 
 
 // upload photo with multer
@@ -14,10 +17,22 @@ const storage = multer.diskStorage({
 })
  const upload = multer({ storage: storage })
 
- 
+
+ //post storage
+route.post('/', upload.single('file'), async (req, res) => {
+    try {
+        const storage = new Storage(req.body);
+        storage.file = req.file.originalname;
+        storage.link = `${MainURL}/media/${storage.file}`;
+        await storage.save();
+        res.status(201).json(storage);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+})
 
 //get storage
-router.get('/', async (req,res)=>{
+route.get('/', async (req,res)=>{
     try {
         const storage = await Storage.find()
         res.json(storage)
@@ -27,7 +42,7 @@ router.get('/', async (req,res)=>{
 })
 
 //get by id section
-router.get('/:id', async (req, res) => {
+route.get('/:id', async (req, res) => {
     try {
         const storage = await Storage.findById(req.params.id);
         if (!storage) return res.status(404).json({ message: 'Bo`lim  topilmadi' });
@@ -38,4 +53,4 @@ router.get('/:id', async (req, res) => {
 })
 
 
-module.exports = router;
+module.exports = route;

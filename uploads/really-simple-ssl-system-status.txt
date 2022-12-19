@@ -1,0 +1,18 @@
+General
+Domain: https://mern.uz
+Plugin version: 6.0.12
+WordPress version: 6.1.1
+SSL certificate is valid
+SSL is enabled
+
+Options
+* Mixed content fixer
+* WordPress redirectwp_redirect
+
+Server information
+Server: apache
+SSL Type: NA
+PHP Version: 8.0.22
+<br><b>SSL Configuration</b>Could not open testpage<br>Detected SSL setup: NA<br>htaccess file exists.<br>htaccess redirect tested successfully.<br>Mixed content fixer successfully detected<br>.htaccess does not contain default Really Simple SSL redirect.<br>
+Constants
+No constants defined
