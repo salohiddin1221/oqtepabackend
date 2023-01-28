@@ -1,29 +1,33 @@
 const route = require('express').Router();
 const Storage = require('../models/Storage')
 const multer = require('multer'); 
+const {storage } = require('../routes/uploadRouter')
 
 //const MainURL = "http://localhost:5000"
-const MainURL = "https://oqtepa-backend.herokuapp.com"
+//const MainURL = "https://oqtepa-backend.herokuapp.com"
 
 
 // upload photo with multer
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, './uploads/')
-    }
-    , filename: function (req, file, cb) {
-        cb(null, file.originalname)
-    }
-})
- const upload = multer({ storage: storage })
+// const storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//         cb(null, './uploads/')
+//     }
+//     , filename: function (req, file, cb) {
+//         cb(null, file.originalname)
+//     }
+// })
+//  const upload = multer({ storage: storage })
 
+const upload = multer({
+    storage
+});
 
  //post storage
 route.post('/', upload.single('file'), async (req, res) => {
     try {
         const storage = new Storage(req.body);
         storage.file = req.file.originalname;
-        storage.link = `${MainURL}/media/${storage.file}`;
+        storage.link = `https://res.cloudinary.com/du6osjcvh/image/upload/oqtepa/${storage.file}`;
         await storage.save();
         res.status(201).json(storage);
     } catch (err) {
